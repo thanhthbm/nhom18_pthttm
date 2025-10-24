@@ -67,4 +67,9 @@ public class ModelVersionService {
   public void deleteVersion(long id) {
     this.modelVersionRepository.deleteById(id);
   }
+
+  public ModelVersion findActiveModelVersion() {
+    ModelVersion activeVersion = this.modelVersionRepository.findByActive(true).get(0);
+    return activeVersion;
+  }
 }
