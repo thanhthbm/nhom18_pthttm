@@ -9,12 +9,12 @@ import com.PTHTTM.nhom18.repository.ModelVersionRepository;
 import com.PTHTTM.nhom18.repository.TrainingJobRepository;
 import com.PTHTTM.nhom18.repository.TrainingResultRepository;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 @Service
@@ -65,13 +65,19 @@ public class TrainingJobService {
     request.setVersionName(versionName);
     request.setDataSourceIds(dataSourceIds);
 
-    startPythonTraining(request);
+    startPythonTraining(request, savedJob);
     return savedJob;
   }
 
   @Async
-  public void startPythonTraining(TrainingRequestDTO request) {
-    restTemplate.postForEntity(pythonTrainUrl, request, String.class);
+  public void startPythonTraining(TrainingRequestDTO request, TrainingJob savedJob) {
+    try {
+      restTemplate.postForLocation(pythonTrainUrl, request);
+    } catch (RestClientException ex) {
+      savedJob.setStatus("FAILED");
+      savedJob.setErrorMessage("Failed to start python training job");
+      trainingJobRepository.save(savedJob);
+    }
   }
 
   @Transactional

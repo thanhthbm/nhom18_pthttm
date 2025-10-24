@@ -26,17 +26,11 @@ public class DataSource {
   @Column(nullable = false)
   private String name;
 
-  @Column(nullable = false)
-  private int recordCount;
 
   @Column(nullable = false)
   private LocalDateTime createdAt = LocalDateTime.now();
 
-  @OneToMany(
-      mappedBy = "dataSource",
-      cascade = CascadeType.ALL,
-      orphanRemoval = true
-  )
-  private List<TrainingReview> listReview = new ArrayList<>();
+  @Column
+  private String fileUrl;
 
 }

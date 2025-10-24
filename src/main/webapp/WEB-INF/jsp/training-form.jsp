@@ -42,7 +42,7 @@
                     <c:forEach var="ds" items="${dataSources}">
                         <label class="data-source-item">
                             <input type="checkbox" name="dataSourceIds" value="${ds.id}">
-                                ${ds.name} (${ds.recordCount} records, created: ${ds.createdAt})
+                                ${ds.name} created: ${ds.createdAt})
                         </label>
                     </c:forEach>
                 </c:when>
