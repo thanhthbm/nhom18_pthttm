@@ -30,12 +30,11 @@
         background: var(--bg);
       }
 
-      /* Header (Nav trên cùng) */
       header {
         background: #fff;
         border-bottom: 1px solid var(--border);
         display: flex;
-        justify-content: center; /* Đưa tab ra giữa */
+        justify-content: center;
         align-items: center;
         padding: 0 20px;
         height: 56px;
@@ -56,11 +55,10 @@
         color: #1e40af;
       }
 
-      /* Main */
       main {
         padding: 24px;
-        max-width: 1200px; /* Giới hạn chiều rộng */
-        margin: 0 auto; /* Căn giữa */
+        max-width: 1200px;
+        margin: 0 auto;
       }
       .page-title {
         font-size: 24px;
@@ -96,7 +94,6 @@
         color: var(--muted);
       }
 
-      /* Metric cards */
       .metrics {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -124,7 +121,6 @@
         color: var(--primary);
       }
 
-      /* Buttons */
       .btn {
         align-self: start;
         background: var(--primary);
@@ -134,14 +130,13 @@
         padding: 12px 18px;
         font-weight: 600;
         cursor: pointer;
-        text-decoration: none; /* Thêm cho thẻ <a> */
+        text-decoration: none;
       }
       .btn:disabled {
         background: #9ca3af;
         cursor: not-allowed;
       }
 
-      /* Thông báo lỗi */
       .error {
         padding: 12px 16px;
         border-radius: 8px;
@@ -151,7 +146,6 @@
         margin-bottom: 20px;
       }
 
-      /* Responsive */
       @media (max-width: 900px) {
         .panels {
           grid-template-columns: 1fr;
@@ -196,8 +190,6 @@
                     <c:if test="${not empty activeModel}">
                         <div class="panel-sub">
                             Phiên bản: <strong>${activeModel.name}</strong>
-<%--                            | Kích hoạt:--%>
-<%--                            <fmt:formatDate value="${activeModel.createdAt}" pattern="dd/MM/yyyy HH:mm" />--%>
                         </div>
                     </c:if>
                 </div>
@@ -207,7 +199,7 @@
                 <c:when test="${not empty activeResult}">
                     <div class="metrics">
                         <div class="metric">
-                            <h4>Điểm F1 (Macro)</h4>
+                            <h4>Điểm F1</h4>
                             <div class="val">
                                 <fmt:formatNumber value="${activeResult.f1Score}" pattern="#0.0000" />
                             </div>
@@ -219,13 +211,13 @@
                             </div>
                         </div>
                         <div class="metric">
-                            <h4>Precision (Macro)</h4>
+                            <h4>Precision</h4>
                             <div class="val">
                                 <fmt:formatNumber value="${activeResult.precision}" pattern="#0.0000" />
                             </div>
                         </div>
                         <div class="metric">
-                            <h4>Recall (Macro)</h4>
+                            <h4>Recall</h4>
                             <div class="val">
                                 <fmt:formatNumber value="${activeResult.recall}" pattern="#0.0000" />%
                             </div>

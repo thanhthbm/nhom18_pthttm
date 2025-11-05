@@ -118,7 +118,7 @@ public class TrainingController {
     }
 
     try {
-      boolean success = modelVersionService.activateVersion(versionToActivate.getId());
+      boolean success = modelVersionService.activateVersion(versionToActivate);
 
       if (success) {
         redirectAttributes.addFlashAttribute("message", "Model '" + versionToActivate.getName() + "' approved and activated successfully!");

@@ -10,9 +10,7 @@
 
     <meta http-equiv="refresh" content="10">
 
-    <%--
-      TOÀN BỘ CSS ĐƯỢC NHÚNG TRỰC TIẾP TẠI ĐÂY
-    --%>
+
     <style>
       :root {
         --bg: #f5f6f8;
@@ -34,7 +32,6 @@
         background: var(--bg);
       }
 
-      /* Header (Nav trên cùng) */
       header {
         background: #fff;
         border-bottom: 1px solid var(--border);
@@ -60,7 +57,6 @@
         color: #1e40af;
       }
 
-      /* Main */
       main {
         padding: 24px;
         max-width: 900px;
@@ -72,7 +68,6 @@
         margin-bottom: 20px;
       }
 
-      /* Panels (Khung nội dung) */
       .panel {
         background: var(--panel);
         border: 1px solid var(--border);
@@ -101,13 +96,11 @@
         align-self: flex-end;
       }
 
-      /* Status / Result Boxes (Bổ sung) */
       .status-box {
         border: 1px solid var(--border);
         border-radius: 12px;
         padding: 24px;
       }
-      /* Style cho trạng thái đang chạy */
       .status-box.pending {
         border-color: #f59e0b;
         background-color: #fffbeb;
@@ -122,7 +115,6 @@
         color: #374151;
       }
 
-      /* Spinner (Bổ sung) */
       .spinner {
         border: 4px solid #f3f4f6;
         border-top: 4px solid var(--primary);
@@ -139,7 +131,6 @@
         100% { transform: rotate(360deg); }
       }
 
-      /* Buttons */
       .btn {
         align-self: start;
         background: var(--primary);
@@ -158,7 +149,6 @@
         border: 1px solid var(--border);
       }
 
-      /* Thông báo lỗi */
       .error {
         padding: 12px 16px;
         border-radius: 8px;
@@ -190,7 +180,6 @@
                 <div class="panel-sub">Model: ${job.modelVersion.name}</div>
             </div>
 
-                <%-- Sử dụng class 'pending' cho trạng thái đang chạy --%>
             <div class="status-box pending">
                 <h2>
                     <span class="spinner"></span>

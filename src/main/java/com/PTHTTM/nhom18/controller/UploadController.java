@@ -13,10 +13,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/admin/data")
-public class ReviewController {
+public class UploadController {
   private final UploadService uploadService;
 
-  public ReviewController(UploadService uploadService) {
+  public UploadController(UploadService uploadService) {
     this.uploadService = uploadService;
   }
 

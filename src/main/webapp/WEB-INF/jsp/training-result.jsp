@@ -30,7 +30,6 @@
         background: var(--bg);
       }
 
-      /* Header (Nav trên cùng) */
       header {
         background: #fff;
         border-bottom: 1px solid var(--border);
@@ -56,7 +55,6 @@
         color: #1e40af;
       }
 
-      /* Main */
       main {
         padding: 24px;
         max-width: 900px;
@@ -68,7 +66,6 @@
         margin-bottom: 20px;
       }
 
-      /* Panels (Khung nội dung) */
       .panel {
         background: var(--panel);
         border: 1px solid var(--border);
@@ -97,7 +94,6 @@
         align-self: flex-end;
       }
 
-      /* Form Elements (Cho ô input readonly) */
       .form-group {
         margin-top: 20px;
       }
@@ -113,11 +109,10 @@
         border: 1px solid var(--border);
         border-radius: 8px;
         font-size: 14px;
-        background: #f9fafb; /* Màu nền cho ô readonly */
+        background: #f9fafb;
         color: var(--muted);
       }
 
-      /* Metric cards (Từ dashboard) */
       .metrics {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -145,7 +140,6 @@
         color: var(--primary);
       }
 
-      /* Status / Result Boxes */
       .status-box {
         border: 1px solid var(--border);
         border-radius: 12px;
@@ -165,19 +159,17 @@
       .status-box.success h2 { color: #15803d; }
       .status-box.failure h2 { color: #b91c1c; }
 
-      /* Thẻ <pre> cho traceback lỗi */
       pre {
         background: #f1f5f9;
         padding: 12px;
         border-radius: 8px;
         border: 1px solid var(--border);
-        white-space: pre-wrap; /* Wrap traceback dài */
+        white-space: pre-wrap;
         word-break: break-all;
         font-family: monospace;
         color: #334155;
       }
 
-      /* Buttons */
       .btn {
         align-self: start;
         background: var(--primary);
@@ -202,7 +194,6 @@
         margin-top: 20px;
       }
 
-      /* Thông báo lỗi */
       .error {
         padding: 12px 16px;
         border-radius: 8px;
@@ -212,7 +203,6 @@
         margin-bottom: 20px;
       }
 
-      /* Responsive */
       @media (max-width: 900px) {
         .metrics {
           grid-template-columns: repeat(2, 1fr);
@@ -246,7 +236,6 @@
             </div>
 
             <c:choose>
-                <%-- Trường hợp 1: Huấn luyện Thành công --%>
                 <c:when test="${job.status == 'COMPLETED'}">
                     <div class="status-box success">
                         <h2>Huấn luyện Hoàn thành!</h2>
@@ -256,7 +245,6 @@
                     <c:if test="${not empty result}">
                         <h3 style="font-size: 16px; margin-bottom: 15px;">Chỉ số đánh giá (Test Set):</h3>
 
-                        <%-- Áp dụng style .metrics từ dashboard --%>
                         <div class="metrics">
                             <div class="metric">
                                 <h4>Độ chính xác (Accuracy)</h4>
@@ -297,7 +285,6 @@
                     </div>
                 </c:when>
 
-                <%-- Trường hợp 2: Huấn luyện Thất bại --%>
                 <c:when test="${job.status == 'FAILED'}">
                     <div class="status-box failure">
                         <h2>Huấn luyện Thất bại!</h2>
@@ -309,7 +296,6 @@
                     </a>
                 </c:when>
 
-                <%-- Trường hợp 3: Khác --%>
                 <c:otherwise>
                     <p>Trạng thái Job là: ${job.status}. Chi tiết kết quả chưa có.</p>
                     <a href="/admin/training/form" class="btn btn-secondary">Quay lại Form</a>

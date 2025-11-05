@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+
 @Service
 public class ModelVersionService {
   private final ModelVersionRepository modelVersionRepository;
@@ -33,14 +34,7 @@ public class ModelVersionService {
   }
 
 
-  public boolean activateVersion(long id) {
-    Optional<ModelVersion> modelVersion = modelVersionRepository.findById(id);
-
-    if (modelVersion.isEmpty()){
-      return false;
-    }
-
-    ModelVersion newVersion = modelVersion.get();
+  public boolean activateVersion(ModelVersion newVersion) {
     if (newVersion.getCheckpointUrl() == null || newVersion.getCheckpointUrl().isEmpty()){
       System.out.println("There is no checkpoint for this version. Url is empty");
       return false;
@@ -49,7 +43,7 @@ public class ModelVersionService {
     List<ModelVersion> currentActiveModel = modelVersionRepository.findByActive(true);
 
     for  (ModelVersion modelVersion1 : currentActiveModel) {
-      if (modelVersion1.getId() != id) {
+      if (modelVersion1.getId() != newVersion.getId()) {
         modelVersion1.setActive(false);
         modelVersionRepository.save(modelVersion1);
       }

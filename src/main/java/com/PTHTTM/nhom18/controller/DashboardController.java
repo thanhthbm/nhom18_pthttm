@@ -2,7 +2,6 @@ package com.PTHTTM.nhom18.controller;
 
 import com.PTHTTM.nhom18.model.ModelVersion;
 import com.PTHTTM.nhom18.model.TrainingResult;
-import com.PTHTTM.nhom18.repository.TrainingResultRepository;
 import com.PTHTTM.nhom18.service.ModelVersionService;
 import com.PTHTTM.nhom18.service.TrainingResultService;
 import org.springframework.stereotype.Controller;

@@ -30,7 +30,6 @@
         background: var(--bg);
       }
 
-      /* Header (Nav trên cùng) */
       header {
         background: #fff;
         border-bottom: 1px solid var(--border);
@@ -56,7 +55,6 @@
         color: #1e40af;
       }
 
-      /* Main */
       main {
         padding: 24px;
         max-width: 900px;
@@ -68,7 +66,6 @@
         margin-bottom: 20px;
       }
 
-      /* Panels (Khung nội dung) */
       .panel {
         background: var(--panel);
         border: 1px solid var(--border);
@@ -92,7 +89,6 @@
         font-weight: 700;
       }
 
-      /* Form Elements */
       .form-group {
         margin-bottom: 20px;
       }
@@ -111,7 +107,6 @@
         background: #fff;
       }
 
-      /* Checkbox list (Bổ sung style) */
       .data-source-list {
         border: 1px solid var(--border);
         padding: 16px;
@@ -119,7 +114,7 @@
         max-height: 250px;
         overflow-y: auto;
         margin-bottom: 15px;
-        background: #f9fafb; /* Nền mờ cho danh sách */
+        background: #f9fafb;
       }
       .data-source-item {
         display: block;
@@ -144,7 +139,6 @@
         font-weight: 400;
       }
 
-      /* Buttons */
       .btn {
         align-self: start;
         background: var(--primary);
@@ -162,7 +156,6 @@
         cursor: not-allowed;
       }
 
-      /* Thông báo */
       .message {
         padding: 12px 16px;
         border-radius: 8px;
@@ -180,7 +173,6 @@
         margin-bottom: 20px;
       }
 
-      /* Responsive */
       @media (max-width: 600px) {
         main {
           padding: 16px;
@@ -195,7 +187,6 @@
         <a class="tab" href="/admin/dashboard">Bảng điều khiển</a>
         <a class="tab" href="/admin/data/upload">Quản lý dữ liệu</a>
         <a class="tab active" href="/admin/training/form">Huấn luyện Mô hình</a>
-        <%-- <a class="tab" href="/admin/dashboard">Bảng điều khiển</a> --%>
     </div>
 </header>
 
@@ -228,11 +219,9 @@
                     <c:choose>
                         <c:when test="${not empty dataSources}">
                             <c:forEach var="ds" items="${dataSources}">
-                                <%-- Áp dụng style .data-source-item --%>
                                 <label class="data-source-item">
                                     <input type="checkbox" name="dataSourceIds" value="${ds.id}">
                                         ${ds.name}
-                                        <%-- Thêm class .date và format ngày tháng --%>
                                 </label>
                             </c:forEach>
                         </c:when>

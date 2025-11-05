@@ -7,11 +7,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Upload dữ liệu</title>
-
-    <%--
-      TOÀN BỘ CSS ĐƯỢC NHÚNG TRỰC TIẾP TẠI ĐÂY
-      (Dựa trên file dashboard của bạn + style cho form)
-    --%>
     <style>
       :root {
         --bg: #f5f6f8;
@@ -33,7 +28,6 @@
         background: var(--bg);
       }
 
-      /* Header (Nav trên cùng) */
       header {
         background: #fff;
         border-bottom: 1px solid var(--border);
@@ -59,11 +53,10 @@
         color: #1e40af;
       }
 
-      /* Main */
       main {
         padding: 24px;
-        max-width: 900px; /* Giới hạn chiều rộng cho form */
-        margin: 0 auto; /* Căn giữa */
+        max-width: 900px;
+        margin: 0 auto;
       }
       .page-title {
         font-size: 24px;
@@ -71,7 +64,6 @@
         margin-bottom: 20px;
       }
 
-      /* Panels (Khung nội dung) */
       .panel {
         background: var(--panel);
         border: 1px solid var(--border);
@@ -96,7 +88,6 @@
         line-height: 1.3;
       }
 
-      /* Form Elements (Bổ sung) */
       .form-group {
         margin-bottom: 20px;
       }
@@ -106,7 +97,6 @@
         font-weight: 600;
         font-size: 14px;
       }
-      /* Áp dụng style cho input */
       .form-control {
         width: 100%;
         padding: 10px 12px;
@@ -116,7 +106,6 @@
         background: #fff;
       }
 
-      /* Buttons */
       .btn {
         align-self: start;
         background: var(--primary);
@@ -134,7 +123,6 @@
         cursor: not-allowed;
       }
 
-      /* Thông báo (cho message/error) */
       .message {
         padding: 12px 16px;
         border-radius: 8px;
@@ -152,7 +140,6 @@
         margin-bottom: 20px;
       }
 
-      /* Responsive */
       @media (max-width: 600px) {
         main {
           padding: 16px;
