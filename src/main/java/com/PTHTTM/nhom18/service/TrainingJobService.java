@@ -52,7 +52,7 @@ public class TrainingJobService {
     return null;
   }
 
-  public TrainingJob createTrainingJob(String versionName, List<Long> dataSourceIds) {
+  public TrainingJob createTrainingJob(String versionName, List<Long> trainingReviewIds) {
     ModelVersion version = modelVersionService.createVersion(versionName);
 
     TrainingJob job = new TrainingJob();
@@ -63,7 +63,7 @@ public class TrainingJobService {
     TrainingRequestDTO request = new TrainingRequestDTO();
     request.setJobId(savedJob.getId());
     request.setVersionName(versionName);
-    request.setDataSourceIds(dataSourceIds);
+    request.setTrainingReviewIds(trainingReviewIds);
 
     startPythonTraining(request, savedJob);
     return savedJob;

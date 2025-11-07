@@ -48,7 +48,7 @@ public class TrainingController {
   @PostMapping("/start")
   public String startTraining(
       @RequestParam("versionName") String versionName,
-      @RequestParam(value = "dataSourceIds", required = false) List<Long> dataSourceIds,
+      @RequestParam(value = "reviewIds", required = false) List<Long> trainingReviewIds,
       RedirectAttributes redirectAttributes
   ){
     if (versionName == null || versionName.trim().isEmpty()) {
@@ -56,12 +56,12 @@ public class TrainingController {
       return "redirect:/admin/training/form";
     }
 
-    if (dataSourceIds == null || dataSourceIds.isEmpty()) {
+    if (trainingReviewIds == null || trainingReviewIds.isEmpty()) {
       redirectAttributes.addFlashAttribute("error", "Please select at least one Data Source to train on.");
       return "redirect:/admin/training/form";
     }
 
-    TrainingJob job = trainingJobService.createTrainingJob(versionName, dataSourceIds);
+    TrainingJob job = trainingJobService.createTrainingJob(versionName, trainingReviewIds);
     return  "redirect:/admin/training/status/" + job.getId();
   }
 

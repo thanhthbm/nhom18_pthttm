@@ -16,4 +16,8 @@ public class DataSourceService {
   public List<DataSource> getDataSource() {
     return dataSourceRepository.findAllByOrderByCreatedAtDesc();
   }
+
+  public DataSource getById(long id){
+    return this.dataSourceRepository.findById(id).get();
+  }
 }

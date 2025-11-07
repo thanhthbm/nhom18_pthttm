@@ -5,7 +5,7 @@ import com.PTHTTM.nhom18.repository.DataSourceRepository;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths; // <-- Thêm import này
+import java.nio.file.Paths;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,12 +14,16 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class UploadService {
   private final DataSourceRepository dataSourceRepository;
+  private final TrainingReviewService trainingReviewService;
   private final Path fileStorageLocation;
 
-
-  public UploadService(DataSourceRepository dataSourceRepository,
-      @Value("${data.upload.dir}") String uploadDir) {
+  public UploadService(
+      DataSourceRepository dataSourceRepository,
+      TrainingReviewService trainingReviewService,
+      @Value("${data.upload.dir}") String uploadDir
+  ) {
     this.dataSourceRepository = dataSourceRepository;
+    this.trainingReviewService = trainingReviewService;
 
     this.fileStorageLocation = Paths.get(uploadDir).toAbsolutePath().normalize();
 
@@ -34,17 +38,17 @@ public class UploadService {
   }
 
   @Transactional
-  public DataSource saveUploadedFile(String name, MultipartFile file) throws IOException {
+  public void saveUploadedFile(String name, MultipartFile file) throws IOException {
     String fileName = file.getOriginalFilename();
-
     Path targetFilePath = this.fileStorageLocation.resolve(fileName);
-
     file.transferTo(targetFilePath);
 
     DataSource dataSource = new DataSource();
     dataSource.setName(name);
     dataSource.setFileUrl(targetFilePath.toString());
+    DataSource savedDataSource =  dataSourceRepository.save(dataSource);
 
-    return dataSourceRepository.save(dataSource);
+    trainingReviewService.handleSaveAll(savedDataSource);
   }
+
 }

@@ -13,5 +13,5 @@ import lombok.Setter;
 public class TrainingRequestDTO {
   private Long jobId;
   private String versionName;
-  private List<Long> dataSourceIds;
+  private List<Long> trainingReviewIds;
 }
