@@ -25,10 +25,12 @@ public class DashboardController {
   public String dashboard(Model model, RedirectAttributes redirectAttributes) {
     ModelVersion modelVersion = modelVersionService.findActiveModelVersion();
 
-    TrainingResult activeResult = trainingResultService.findByJob(modelVersion.getTrainingJob());
+    if (null != modelVersion) {
+      TrainingResult activeResult = trainingResultService.findByJob(modelVersion.getTrainingJob());
+      model.addAttribute("activeModel",  modelVersion);
+      model.addAttribute("activeResult", activeResult);
+    }
 
-    model.addAttribute("activeModel",  modelVersion);
-    model.addAttribute("activeResult", activeResult);
     return "dashboard";
   }
 }

@@ -63,7 +63,10 @@ public class ModelVersionService {
   }
 
   public ModelVersion findActiveModelVersion() {
-    ModelVersion activeVersion = this.modelVersionRepository.findByActive(true).get(0);
-    return activeVersion;
+    List<ModelVersion> versionList = this.modelVersionRepository.findByActive(true);
+    if (versionList.isEmpty()) {
+      return null;
+    }
+    return versionList.get(0);
   }
 }
